@@ -1,0 +1,1 @@
+import { maisculo } from "./mensagens"; //assim se usa o import no ecma script
