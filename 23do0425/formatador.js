@@ -15,5 +15,5 @@ function formatarCpf(CPF) {
     }
     return newCpf
 }
-
+//Obs: ambos estão errados, pois ele quer formatar e não censurar no cpf
 module.exports = {formatarCpf, formatarNomes}
