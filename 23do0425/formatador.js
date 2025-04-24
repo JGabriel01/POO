@@ -1,19 +1,13 @@
 function formatarNomes(nome) {
-    let i = nome.charAt(0).toUpperCase() /* Primeiro usamos o charAt para retirar a letra no índice 0, e em seguida a transformamos em maiscula com o toUpperCase */
-    let e = nome.slice(1) //Aqui nós separamos a string conservando o elemento no índice 1 e retiramos todos os outros anteriores a ele com o slice, pois ele conserva o primeiro elemento a ser cortado e elimina os outros anteriores a ele.
-    return i + e //por fim concatenamos para formar a string com inicial maiscula
+  return nome.toLowerCase().split(" ").map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1)).join(" ")
 }
 
-function formatarCpf(CPF) {
-    let newCpf = ""
-    for (let i in CPF) {
-        if(CPF[i] !== "." && CPF[i] !== "-") {
-            newCpf += "#"
-        } else {
-            newCpf += CPF[i]
-        }
-    }
-    return newCpf
+function formatarCpf(cpf) {
+     if (cpf.length > 11) {
+        console.log("Cpf invalido!")
+     } else {
+        return cpf.slice(0,3) + "." + cpf.slice(3,6) + "." + cpf.slice(6,9) + "-" + cpf.slice(9,11)
+     }
 }
 //Obs: ambos estão errados, pois ele quer formatar e não censurar no cpf
 module.exports = {formatarCpf, formatarNomes}

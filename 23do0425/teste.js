@@ -1,4 +1,4 @@
 const i = require("./formatador")
 
-console.log(i.formatarCpf("100.344.555-89"))
-console.log(i.formatarNomes("ana"))
+console.log(i.formatarCpf("10034455589"))
+console.log(i.formatarNomes("ana beatriz"))
