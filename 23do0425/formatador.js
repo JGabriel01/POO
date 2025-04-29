@@ -4,7 +4,7 @@ function formatarNomes(nome) {
 
 function formatarCpf(cpf) {
      if (cpf.length > 11) {
-        console.log("Cpf invalido!")
+        console.log("Cpf inválido!")
      } else {
         return cpf.slice(0,3) + "." + cpf.slice(3,6) + "." + cpf.slice(6,9) + "-" + cpf.slice(9,11)
      }
