@@ -1,4 +1,4 @@
-let ol = document.getElementById("lista") //document só da certo no codepen, o comando getElementById() é usado para pegar elementos no html com um id específico e usar no javascript
+let ol = document.getElementById("lista") //funciona, o comando getElementById() é usado para pegar elementos no html com um id específico e usar no javascript
 let ing = [
     {nome: "manteiga", quantidade: 3},
      {nome: "ovo", quantidade: 2 },
@@ -7,6 +7,7 @@ let ing = [
 ]
 let ingredientes = "";
 ing.forEach(itens => {
-    ingredientes += `<li>${itens.nome}: ${itens.quantidade}</li>`
+    ingredientes += `<li> ${itens.quantidade}:${itens.nome}</li>`
+    ol.innerHTML = ingredientes; 
 })
-ol.innerHTML = ingredientes; //innerHTML é o espaço entre as tags, esse comando permite adicionar elementos do javascript no html
+//innerHTML é o espaço entre as tags, esse comando permite adicionar elementos do javascript no html
