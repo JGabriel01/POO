@@ -3,6 +3,7 @@
 
 {"nome": "caderno", "preco": 30.00},
 
-{"nome": "bola", "preco": 100.00}
+{"nome": "bola", "preco": 100.00},
 
+{"nome": "banner", "preco": 500.00}
 ]
