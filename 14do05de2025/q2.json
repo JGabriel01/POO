@@ -1,9 +1,1 @@
-[
-{"nome": "caneta", "preco": 3.00},
-
-{"nome": "caderno", "preco": 30.00},
-
-{"nome": "bola", "preco": 100.00},
-
-{"nome": "banner", "preco": 500.00}
-]
+[{"nome":"caneta","preco":3},{"nome":"caderno","preco":30},{"nome":"bola","preco":100},{"nome":"banner","preco":500},{"nome":"resma","preco":35}]
