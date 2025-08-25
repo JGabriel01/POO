@@ -5,16 +5,11 @@ let heroiFavorito = {
     afiliacao: "Liga da Justiça",
 }
 
-let poderAleatorio = "ARTES MARCIAIS"
 function possuirPoder(heroiFavorito, poderAleatorio) {
-    for(let e of heroiFavorito.poderes) {
-        poderAleatorio = poderAleatorio.toLowerCase()
-        if(e === poderAleatorio) {
-            return true
-        } else {
-            return false
-        }
+    for(let i=0; i<heroiFavorito.poderes.length; i++) {
+        let poder = heroiFavorito.poderes[i]
+        return poder==poderAleatorio
     }
 }
 
-console.log(possuirPoder(heroiFavorito, poderAleatorio))
+console.log(possuirPoder(heroiFavorito, "ARTES MARCIAIS"))
