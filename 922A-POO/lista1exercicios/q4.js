@@ -6,10 +6,10 @@ let heroiFavorito = {
 }
 
 function possuirPoder(heroiFavorito, poderAleatorio) {
-    for(let i=0; i<heroiFavorito.poderes.length; i++) {
-        let poder = heroiFavorito.poderes[i]
-        return poder==poderAleatorio
-    }
+    poderAleatorio = poderAleatorio.toLowerCase()
+    return heroiFavorito.poderes.includes(poderAleatorio)
 }
 
-console.log(possuirPoder(heroiFavorito, "ARTES MARCIAIS"))
+console.log(possuirPoder(heroiFavorito, "riqueza")) // true
+console.log(possuirPoder(heroiFavorito, "ARTES MARCIAIS")) // true
+console.log(possuirPoder(heroiFavorito, "super força")) // false
