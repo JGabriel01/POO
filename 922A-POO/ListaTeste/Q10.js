@@ -9,11 +9,9 @@ let boletim = {
   
   calcularMedia: (ob) => {
     let notas = ob.notas
-    let soma = 0
+    let valores = Object.values(notas)
     let tamanho = Object.keys(notas)
-    for (let i in notas) {
-      soma += notas[i]
-    }
+    let soma = valores.reduce((a, b) => a + b)
     let media = soma/tamanho.length
     return media.toFixed(2)
   },
