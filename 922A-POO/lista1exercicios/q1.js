@@ -7,11 +7,13 @@ let dog = {
     servicos: ["Banho", "consulta"]
 }
 function exibirFicha(dog) {
+  let msg = "";
     if (dog.vacinado === true) {
-        return `${dog.nome} é um ${dog.especie} da raça ${dog.raca} de ${dog.idade} anos. Vacinado: sim`
+        msg = `${dog.nome} é um ${dog.especie} da raça ${dog.raca} de ${dog.idade} anos. Vacinado: sim`
     } else {
-        return `${dog.nome} é um ${dog.especie} da raça ${dog.raca} de ${dog.idade} anos. Vacinado: não`
+        msg = `${dog.nome} é um ${dog.especie} da raça ${dog.raca} de ${dog.idade} anos. Vacinado: não`
     }
+    return msg
 }
 
 console.log(exibirFicha(dog)) 
