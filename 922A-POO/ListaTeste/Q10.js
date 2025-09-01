@@ -19,9 +19,13 @@ let boletim = {
   },
   
   verificarStatus: (media) => {
-    
+    if (media >= 7) {
+      console.log(`Aprovada`)
+    } else {
+      console.log(`Reprovada`)
+    }
   }
 }
 
 console.log(boletim.calcularMedia(boletim))
-
+boletim.verificarStatus(boletim.calcularMedia(boletim))
