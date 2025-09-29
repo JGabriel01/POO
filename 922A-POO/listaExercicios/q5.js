@@ -12,3 +12,5 @@ function mod(color) {
     console.log(`Cor 2: ${cor2}`)
 }
 mod(cor)
+
+console.log("Teste")
