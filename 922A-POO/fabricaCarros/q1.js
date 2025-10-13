@@ -11,9 +11,9 @@ function cria_carro() {
     },
     verificarVelocidade: function () {
         if (this.velocidadeAtual > this.velocidadeMaxima) {
-            return "Velocidade máxima ultrapassada!"
+            return true
         }
-        return "Velocidade normal"
+        return false
     },
     liga: function () { 
         if (this.motor.tipo === "elétrico") {
@@ -22,7 +22,11 @@ function cria_carro() {
         return "O carro está ligado"
     },
     acelerar: function (qtd) {
-        return this.velocidadeAtual += qtd
+        if (this.verificarVelocidade === true) {
+            return "Velocidade Máxima atingida"
+        }
+         this.velocidadeAtual += qtd
+         return this.velocidadeAtual
     },
     informaMarcha: function () {
         if (this.velocidadeAtual < 0) {
@@ -82,7 +86,5 @@ motorEletrico.tipo = "elétrico"
 motorEletrico.potencia = 300
 
 console.log(carroEletrico.liga())
-carroEletrico.acelerar(200)
-console.log(carroEletrico.verificarVelocidade())
-carroEletrico.acelerar(1)
-console.log(carroEletrico.verificarVelocidade())
+console.log(carroEletrico.acelerar(200))
+console.log(carroEletrico.acelerar(1))
