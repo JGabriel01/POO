@@ -1,72 +1,55 @@
-class Produto {
+class produto {
     constructor(nome, preco) {
-        this.nome = nome;
-        this.preco = preco;
+        this.nome = nome
+        this.preco = parseInt(preco)
     }
-
     toString() {
-        return `${this.nome} (R$ ${this.preco.toFixed(2)})`;
+        return `Nome do produto: ${this.nome} - R$ ${this.preco}`
     }
 }
 
-class Carrinho {
+class carrinho {
     constructor() {
-        this.itens = []; // Array para armazenar objetos Produto
+        this.produtos = []
     }
-
-    adicionarProduto(produto) {
-        this.itens.push(produto);
-        console.log(`+ ${produto.nome} adicionado ao carrinho.`);
-    }
-
-    calcularTotal() {
-        let total = 0;
-        for (const produto of this.itens) {
-            total += produto.preco;
+    exibirCarrinho() {
+        if (this.produtos.length === 0) {
+            return console.log(`Nenhum produto no carrinho`)
+        } else {
+            console.log(`---Carrinho completo:---`)
+            this.produtos.forEach(p => {
+                console.log(p.toString())
+            })
+            console.log(`------------------------`)
         }
-        return total;
-    }
-
-    listarItens() {
-        console.log("\n--- Itens no Carrinho ---");
-        if (this.itens.length === 0) {
-            console.log("O carrinho está vazio.");
-            return;
-        }
-        this.itens.forEach(item => console.log(`- ${item.toString()}`));
-        console.log("------------------------");
     }
 }
 
-class Cliente {
-    constructor(nome) {
-        this.nome = nome;
-        // O Cliente possui um Carrinho
-        this.carrinho = new Carrinho(); 
+class cliente {
+    adicionarProdutos(carrinho, p) {
+        carrinho.produtos.push(p)
+    }
+    totalCompra(carrinho){
+        let t = 0
+        carrinho.produtos.forEach(p => {
+             t += parseInt(p.preco)
+        })
+        return `Total da compra do carrinho: R$ ${t}`
     }
 }
 
-// --- Simulação da Compra ---
+let p1 = new produto("Bola", 30)
+let p2 = new produto("escova de dente", 2)
+let p3 = new produto("Bola de golfe", 15)
 
-// 1. Criar produtos
-const monitor = new Produto("Monitor UltraWide", 1250.00);
-const mouse = new Produto("Mouse Gamer RGB", 185.50);
-const teclado = new Produto("Teclado Mecânico", 320.99);
+let c1 = new carrinho()
 
-// 2. Criar cliente
-const clienteA = new Cliente("Lucas Ferreira");
+let cliente1 = new cliente()
 
-console.log(`\nBem-vindo à loja, ${clienteA.nome}!`);
+cliente1.adicionarProdutos(c1,p1)
+cliente1.adicionarProdutos(c1,p2)
+cliente1.adicionarProdutos(c1,p3)
 
-// 3. Adicionar produtos ao carrinho do cliente
-clienteA.carrinho.adicionarProduto(monitor);
-clienteA.carrinho.adicionarProduto(mouse);
-clienteA.carrinho.adicionarProduto(teclado);
-clienteA.carrinho.adicionarProduto(teclado); 
+console.log(cliente1.totalCompra(c1))
 
-// 4. Listar e calcular o total
-clienteA.carrinho.listarItens();
-
-const totalDaCompra = clienteA.carrinho.calcularTotal();
-
-console.log(`💲 Total da compra: R$ ${totalDaCompra.toFixed(2)}`);
+c1.exibirCarrinho()

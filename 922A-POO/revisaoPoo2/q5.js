@@ -1,85 +1,73 @@
-class Livro {
-    constructor(titulo, autor, isbn) {
-        this.titulo = titulo;
-        this.autor = autor;
-        this.isbn = isbn; // ISBN: chave única
-        this.disponivel = true; 
+class livro {
+    constructor (titulo, autor, id) {
+        this.titulo = titulo
+        this.autor = autor
+        this.id = id
+        this.disponivel = true
     }
-
-    toString() {
-        const status = this.disponivel ? 'Disponível' : 'Emprestado';
-        return `"${this.titulo}" por ${this.autor} (ISBN: ${this.isbn}) - Status: ${status}`;
+    toString(){
+        let status = this.disponivel? "Disponível":"Emprestado"
+        return `O livro ${this.titulo} do autor ${this.autor}, tem id ${this.id} e está ${status}.`
     }
 }
 
-class Usuario {
+class usuario {
     constructor(nome, id) {
-        this.nome = nome;
-        this.id = id;
+        this.nome = nome
+        this.id = id
     }
 }
 
-class Biblioteca {
+class biblioteca {
     constructor() {
-        this.acervo = []; // Array para armazenar objetos Livro
+        this.acervo = []
     }
-
     adicionarLivro(livro) {
-        const livroExistente = this.acervo.find(l => l.isbn === livro.isbn);
+        let livroExistente = this.acervo.find(l => l.id === livro.id)
         if (livroExistente) {
-            console.log(`❌ Erro: Livro com ISBN ${livro.isbn} já existe no acervo.`);
-            return;
+            console.log(`Livro com id ${livro.id} já existe no acervo`)
+        } else{
+            this.acervo.push(livro)
+            console.log(`Livro adicionado com sucesso`)
         }
-        this.acervo.push(livro);
-        console.log(`✅ Livro "${livro.titulo}" adicionado ao acervo.`);
     }
-
-    emprestarLivro(isbn, usuario) {
-        const livro = this.acervo.find(l => l.isbn === isbn);
-
+    emprestarLivro(id, usuario) {
+        let livro = this.acervo.find(l => l.id = id)
         if (!livro) {
-            console.log(`❌ Erro: Livro com ISBN ${isbn} não encontrado.`);
-            return false;
+            console.log(`Livro com id ${id} não encontrado para empréstimo`)
         }
-
-        if (livro.disponivel) {
-            livro.disponivel = false;
-            console.log(`✅ Livro "${livro.titulo}" emprestado para ${usuario.nome}.`);
-            return true;
+        if (livro.disponivel === true) {
+            livro.disponivel = false
+            console.log(`Livro com id ${id} foi emprestado com sucesso para o usuario com id ${usuario.id}`)
         } else {
-            console.log(`⚠️ Livro "${livro.titulo}" já está emprestado.`);
-            return false;
+            console.log(`livro não disponível para empréstimos`)
         }
     }
-
-    listarLivrosDisponiveis() {
-        const disponiveis = this.acervo.filter(livro => livro.disponivel === true);
-        console.log("\n--- Livros Disponíveis no Acervo ---");
-
-        if (disponiveis.length === 0) {
-            console.log("Nenhum livro disponível no momento.");
-            return;
-        }
-
-        disponiveis.forEach(livro => {
-            console.log(livro.toString());
+    listarLivros() {
+        let livrosDisponiveis = this.acervo.filter(l => l.disponivel === true)
+        if (livrosDisponiveis.length === 0) {
+            console.log(`Nenhum livro disponível para se listar`)
+        } else {
+        console.log(`-- Livros Disponíveis --`);
+        livrosDisponiveis.forEach(livro => {
+            console.log(`${livro.toString()}`);
         });
-        console.log("------------------------------------\n");
-    }
-
-    devolverLivro(isbn) {
-        const livro = this.acervo.find(l => l.isbn === isbn);
-        
-        if (!livro) {
-            console.log(`❌ Erro: Livro com ISBN ${isbn} não encontrado.`);
-            return;
-        }
-
-        if (!livro.disponivel) {
-            livro.disponivel = true;
-            console.log(`✅ Livro "${livro.titulo}" devolvido com sucesso.`);
-        } else {
-            console.log(`⚠️ Livro "${livro.titulo}" já estava marcado como disponível.`);
-        }
+        console.log(`------------------------`);
+    } 
     }
 }
+
+let l1 = new livro("Livro1", "Js", 1)
+let l2 = new livro("Livro2", "Oj", 2)
+
+let u1 = new usuario("José", 1)
+
+let b1 = new biblioteca()
+b1.adicionarLivro(l1)
+b1.adicionarLivro(l1)
+b1.adicionarLivro(l2)
+
+b1.emprestarLivro(1, u1)
+b1.emprestarLivro(1, u1)
+
+b1.listarLivros()
