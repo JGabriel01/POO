@@ -43,6 +43,16 @@ class biblioteca {
             console.log(`livro não disponível para empréstimos`)
         }
     }
+    devolverLivro(id) {
+        let livro = this.acervo.find(l => l.id = id)
+        if (!livro) {
+            console.log(`Livro com id ${id} não encontrado para devolução`)
+        }
+        if (livro.disponivel === false) {
+            livro.disponivel = true
+            console.log(`Livro com id ${id} foi devolvido com sucesso!`)
+        }       
+    }
     listarLivros() {
         let livrosDisponiveis = this.acervo.filter(l => l.disponivel === true)
         if (livrosDisponiveis.length === 0) {
@@ -69,5 +79,6 @@ b1.adicionarLivro(l2)
 
 b1.emprestarLivro(1, u1)
 b1.emprestarLivro(1, u1)
+b1.devolverLivro(1)
 
 b1.listarLivros()
