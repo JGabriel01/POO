@@ -1,11 +1,30 @@
 class Pessoa {
+    #nome
+    #idade
+
     constructor(){
-        this.nome = ''
-        this.idade = 0
+        this.#nome = ''
+        this.#idade = 0
+    }
+
+    getIdade() {
+        return this.#idade
+    }
+
+    getNome() {
+        return this.#nome
+    }
+
+    setNome(nome) {
+        return this.#nome = nome
+    }
+
+    setIdade(idade) {
+        return this.#idade = idade
     }
 
     apresentar() {
-        return `Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`
+        return `Olá, meu nome é ${this.getNome()} e tenho ${this.getIdade()} anos.`
     }
 }
 
@@ -26,17 +45,26 @@ class Aluno extends Pessoa {
     }
 
     apresentar() {
-        return `Olá, meu nome é ${this.nome} e tenho ${this.idade} anos e minha matrícula é ${this.getMatricula()}`
+        return `Olá, meu nome é ${super.getNome()} e tenho ${super.getIdade()} anos e minha matrícula é ${this.getMatricula()}`
     }
 }
 
 class Professor extends Pessoa {
+    #disciplina
     constructor() {
         super()
-        this.disciplina = ''
+        this.#disciplina = ''
+    }
+
+    getDisciplina() {
+        return this.#disciplina
+    }
+
+    setDisciplina(disciplina) {
+        this.#disciplina = disciplina
     }
 
     apresentar() {
-        return `Olá, sou o Professor ${this.nome}, leciono ${this.disciplina} e tenho ${this.idade} anos.`
+        return `Olá, sou o Professor ${super.getNome()}, leciono ${this.getDisciplina()} e tenho ${super.getIdade()} anos.`
     }
 }
