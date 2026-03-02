@@ -3,7 +3,7 @@ function dividirDoisNum(num1, num2) {
     let divisao = num1 / num2
 
     if ((num1 === 0 || num2 === 0) || (isNaN(num1) || isNaN(num2))) {
-        throw "Divisão com algum dos números sendo 0 ou algum número invalido é inválido "
+        throw "Divisão com algum dos números sendo 0 é inválido "
     }
 
     console.log(`O resultado da divisão é: ${divisao}`) 
@@ -14,4 +14,5 @@ function dividirDoisNum(num1, num2) {
     }   
 }
 
-dividirDoisNum("E", 5)
+dividirDoisNum(10, 2
+)
