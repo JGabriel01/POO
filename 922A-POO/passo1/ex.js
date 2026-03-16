@@ -18,7 +18,7 @@ inicializarBanco()
 function criaTabelas() {
     const db = inicializarBanco()
     db.serialize(() => {
-        db.run(`create table estudante(
+        db.run(`create table estudante (
             cod interger,
             nome text,
             fone text,
@@ -33,22 +33,14 @@ function criaTabelas() {
             )`)
 
     
-        db.run(`create table turma_estudante(
+        db.run(`create table turma_estudante (
             cod_estudante interger,
             cod_turma interger,
             primary key (cod_estudante,cod_turma),
             foreign key (cod_estudante) references estudante(cod),
             foreign key (cod_turma) references turma(cod)
-            )`)
-    })
-    db.close()
-}
+            )`);
 
-criaTabelas()
-
-function inserirNasTabelas() {
-    const db = inicializarBanco()
-    db.serialize(() => {
         db.run(`insert into estudante(cod, nome, fone) values (1, 'zé', "82998765679"),
                                                              (2, 'zézinho', "82998765679"),
                                                              (3, 'zé inho', "82998765679"),
@@ -56,7 +48,6 @@ function inserirNasTabelas() {
                                                              (5, 'zé ão', "82998765679");
                                                              `)
 
-    
         db.run(`insert into turma(cod, idioma, horario) values (1, 'pt', '16hrs'),
                                                              (2, 'pt-br', "17hrs"),
                                                              (3, 'usa', "18hrs"),
@@ -64,7 +55,6 @@ function inserirNasTabelas() {
                                                              (5, 'frances', "20hrs");
                                                              `)
 
-    
         db.run(`insert into turma_estudante(cod_estudante, cod_turma) values (1,1),
                                                              (2,2),
                                                              (3,3),
@@ -75,4 +65,4 @@ function inserirNasTabelas() {
     db.close()
 }
 
-inserirNasTabelas()
+criaTabelas()
