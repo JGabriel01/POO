@@ -52,6 +52,44 @@ class EstudanteDAO{
            db.close();
        }
    }
-}
 
+   buscar(cod) {
+       let sql = `select * from estudante where cod = ?`
+       const db = this.initializeDatabase();
+       db.each(sql, [cod], (err, row) => {
+           if (err) {
+               console.error('Deu ruim buscando estudante:', err.message);
+           } else {
+               console.log(`Estudante encontrado:  código - ${row.cod}, nome - ${row.nome}, fone - ${row.fone}`);
+           }
+       });
+       db.close();
+   }
+
+   listarTodos() {
+       let sql = `select * from estudante`
+       const db = this.initializeDatabase();
+       db.each(sql, [], (err, row) => {
+           if (err) {
+               console.error('Deu ruim listando estudantes:', err.message);
+           } else {
+               console.log('Estudantes encontrados:', row);
+           }
+       });
+       db.close();
+   }
+
+   buscarNome(nome) {
+       let sql = `select * from estudante where nome like ?`
+       const db = this.initializeDatabase();
+       db.each(sql, [`%${nome}%`], (err, row) => {
+           if (err) {
+               console.error('Deu ruim buscando estudante por nome:', err.message);
+           } else {
+               console.log('Estudante encontrado:', row);
+           }
+       });
+       db.close();
+   }
+}
 module.exports = {EstudanteDAO}

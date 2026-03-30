@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose()
 
 function inicializarBanco() {
-    let db 
+    let db
 
     try {
         db = new sqlite3.Database('./meuBanco.db')
@@ -25,14 +25,14 @@ function criaTabelas() {
             primary key (cod)
             )`)
 
-    
+
         db.run(`create table turma (
             cod interger primary key,
             idioma text,
             horario text
             )`)
 
-    
+
         db.run(`create table turma_estudante (
             cod_estudante interger,
             cod_turma interger,
@@ -61,6 +61,9 @@ function criaTabelas() {
                                                              (4,4),
                                                              (5,5)
                                                              `)
+
+
+        
     })
     db.close()
 }

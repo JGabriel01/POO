@@ -52,6 +52,45 @@ class TurmaDAO{
            db.close();
        }
    }
+
+   buscar(cod) {
+       let sql = `select * from turma where cod = ?`
+       const db = this.initializeDatabase();
+       db.each(sql, [cod], (err, row) => {
+           if (err) {
+               console.error('Deu ruim buscando turma:', err.message);
+           } else {
+               console.log('Turma encontrada:', row);
+           }
+       });
+       db.close();
+   }
+
+   listarTodos() {
+       let sql = `select * from turma`
+       const db = this.initializeDatabase();
+       db.each(sql, [], (err, rows) => {
+           if (err) {
+               console.error('Deu ruim listando turmas:', err.message);
+           } else {
+               console.log('Turmas encontradas:', rows);
+           }
+       });
+       db.close();
+   }
+
+   buscarIdioma(idioma) {
+       let sql = `select * from turma where idioma like ?`
+       const db = this.initializeDatabase();
+       db.each(sql, [`%${idioma}%`], (err, row) => {
+           if (err) {
+               console.error('Deu ruim buscando turma por idioma:', err.message);
+           } else {
+               console.log('Turma encontrada:', row);
+           }
+       });
+       db.close();
+   }
 }
 
 module.exports = {TurmaDAO}

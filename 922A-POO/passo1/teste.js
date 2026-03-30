@@ -8,6 +8,22 @@ const {TurmaDAO} = require('./persistencia/TurmaDAO')
 let dao = new EstudanteDAO()
 dao.inserir(fulano)*/
 
-let t1 = new Turma(6, 'Portugues', '16hrs')
+/*let t1 = new Turma(6, 'Portugues', '16hrs')
 let daoT = new TurmaDAO()
-daoT.inserir(t1)
+daoT.inserir(t1)*/
+
+/*let dao = new EstudanteDAO()
+dao.buscar(1)*/
+
+/*let dao = new EstudanteDAO()
+dao.listarTodos()*/
+
+/*let daoT = new TurmaDAO()
+daoT.buscar(1)
+daoT.listarTodos()*/
+
+/*let dao = new EstudanteDAO()
+dao.buscarNome('zé')*/
+
+let daoT = new TurmaDAO()
+daoT.buscarIdioma('pt')
