@@ -1,5 +1,5 @@
 class Jogo {
-    constructor(id, titulo, genero, finalizado) {
+    constructor(titulo, genero, finalizado, id) {
         this.id = id
         this.titulo = titulo
         this.genero = genero
